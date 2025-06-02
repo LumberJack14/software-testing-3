@@ -8,8 +8,8 @@ import java.time.Duration;
 public class Init {
     public WebDriver driver;
     public WebDriverWait wait;
-    public final String BASE = "https://yandex.ru/maps/";
-    public String browser = "chrome"; // firefox
+    public final String BASE = "https://yandex.com/maps/";
+    public String browser = "firefox"; // firefox
 
     @BeforeEach
     public void setUp() {
