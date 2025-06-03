@@ -1,5 +1,7 @@
 import com.example.DriverManager;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
@@ -12,14 +14,23 @@ public class Init {
     public WebDriver driver;
     public WebDriverWait wait;
     public final String BASE = "https://yandex.com/maps/";
-    public String browser = "firefox"; // firefox
+    public String browser = "chrome"; // firefox chrome
 
     @BeforeEach
     public void setUp() {
-        FirefoxProfile profile = new FirefoxProfile();
-        profile.setPreference("intl.accept_languages", "en-US"); // or your desired language
-        FirefoxOptions options = new FirefoxOptions().setProfile(profile);
-        driver = new FirefoxDriver(options);
+        if (browser.equalsIgnoreCase("firefox")) {
+            FirefoxProfile profile = new FirefoxProfile();
+            profile.setPreference("intl.accept_languages", "en-US");
+            FirefoxOptions options = new FirefoxOptions().setProfile(profile);
+            driver = new FirefoxDriver(options);
+        } else if (browser.equalsIgnoreCase("chrome")) {
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--lang=en-US");
+            driver = new ChromeDriver(options);
+        } else {
+            throw new IllegalArgumentException("Unsupported browser: " + browser);
+        }
+
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.get(BASE);
         System.out.println("Started test in browser: " + browser);

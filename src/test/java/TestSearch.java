@@ -14,6 +14,7 @@ public class TestSearch extends Init {
 
     @Test
     public void TestSearch() throws InterruptedException {
+        System.out.println("Started Place Search test");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         By searchBoxLocator = By.xpath("//input[@placeholder='Search for and select places']");
         wait.until(ExpectedConditions.presenceOfElementLocated(searchBoxLocator));
@@ -28,6 +29,6 @@ public class TestSearch extends Init {
         WebElement firstTitle = wait.until(ExpectedConditions.presenceOfElementLocated(titleLocator));
 
         String text = firstTitle.getText();
-        assertTrue(text.contains("Burger King"), "First title should contain 'Burger King'");
+        assertTrue(text.contains("Burger King") || text.contains("Бургер Кинг"), "First title should contain 'Burger King'");
     }
 }

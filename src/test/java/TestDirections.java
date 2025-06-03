@@ -9,6 +9,7 @@ import java.util.List;
 public class TestDirections extends Init {
     @Test
     public void TestTravelMode() throws InterruptedException {
+        System.out.println("Started Directions Search test.");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         WebElement searchInput = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//input[@placeholder='Search for and select places']")));

@@ -84,7 +84,7 @@ public class DriverManager {
 
             driver = new FirefoxDriver(options);
         } else {
-            throw new IllegalArgumentException("Неподдерживаемый тип браузера: " + browserType);
+            throw new IllegalArgumentException("Unsupported browser: " + browserType);
         }
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
