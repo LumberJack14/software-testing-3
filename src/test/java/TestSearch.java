@@ -14,7 +14,6 @@ public class TestSearch extends Init {
 
     @Test
     public void TestSearch() throws InterruptedException {
-
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         By searchBoxLocator = By.xpath("//input[@placeholder='Search for and select places']");
         wait.until(ExpectedConditions.presenceOfElementLocated(searchBoxLocator));
