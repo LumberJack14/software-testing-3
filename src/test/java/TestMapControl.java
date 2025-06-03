@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class TestMapControl extends Init{
+public class TestMapControl extends Init {
     @Test
     public void TestZoom() throws InterruptedException {
         WebElement zoomInBtn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@aria-label='Zoom in']")));
@@ -33,6 +33,7 @@ public class TestMapControl extends Init{
         String zoomedOutText = scaleLabelZoomedIn.getText();
         assertTrue(zoomedOutText.contains("500 km"), "Expected '500 km' after zoom out");
     }
+
     @Test
     public void TestDrag() throws InterruptedException {
 
