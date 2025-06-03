@@ -10,23 +10,25 @@ import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class TestSearch extends Init{
+public class TestSearch extends Init {
 
     @Test
     public void testSearchForOpenAI() throws InterruptedException {
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-        WebElement searchBox = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@placeholder='Поиск и выбор мест']")));
-        new Actions(driver).sendKeys(searchBox, "Burger King").perform();
-        searchBox = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@placeholder='Поиск и выбор мест']")));
-        new Actions(driver).sendKeys(searchBox, Keys.ENTER).perform();
+        By searchBoxLocator = By.xpath("//input[@placeholder='Search for and select places']");
+        wait.until(ExpectedConditions.presenceOfElementLocated(searchBoxLocator));
+        WebElement searchBox = driver.findElement(searchBoxLocator);  // locate again
+        searchBox.sendKeys("Burger King");
 
+        wait.until(ExpectedConditions.presenceOfElementLocated(searchBoxLocator));
+        searchBox = driver.findElement(searchBoxLocator);
+        searchBox.sendKeys(Keys.ENTER);
 
-        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-
-        WebElement firstTitle = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//a[@class='card-title-view__title-link'])[1]")));
+        By titleLocator = By.xpath("(//a[@class='card-title-view__title-link'])[1]");
+        WebElement firstTitle = wait.until(ExpectedConditions.presenceOfElementLocated(titleLocator));
 
         String text = firstTitle.getText();
-        assertTrue(text.contains("Бургер Кинг"), "First title should contain 'Бургер Кинг'");
+        assertTrue(text.contains("Burger King"), "First title should contain 'Burger King'");
     }
 }
