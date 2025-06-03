@@ -38,7 +38,7 @@ public class DriverManager {
             options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation", "enable-logging"});
             if (incognito) {
                 options.addArguments("--incognito");
-                System.out.println("Chrome запускается в режиме инкогнито");
+                System.out.println("Started Chrome in incognito mode");
             }
 
             String[] chromePaths = {
@@ -63,7 +63,7 @@ public class DriverManager {
             options.addArguments("--disable-notifications");
             if (incognito) {
                 options.addArguments("-private");
-                System.out.println("Firefox запускается в приватном режиме");
+                System.out.println("Started Firefox in incognito mode");
                 FirefoxProfile profile = new FirefoxProfile();
                 profile.setPreference("browser.privatebrowsing.autostart", true);
                 options.setProfile(profile);
