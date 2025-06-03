@@ -35,8 +35,6 @@ public class TestRelative extends Init{
         WebElement shareBtn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@aria-label='Share']")));
         shareBtn.click();
 
-
-
         By shareLinkLocator = By.xpath("//div[@aria-label='Sharing link']//div[contains(@class, 'card-share-view__text')]");
         wait.until(ExpectedConditions.presenceOfElementLocated(shareLinkLocator));
         WebElement shareLinkElement = driver.findElement(shareLinkLocator);
@@ -66,7 +64,8 @@ public class TestRelative extends Init{
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         By titleLocator = By.xpath("(//h1[@class='card-title-view__title'])");
-        WebElement title = wait.until(ExpectedConditions.presenceOfElementLocated(titleLocator));
+        wait.until(ExpectedConditions.elementToBeClickable(titleLocator));
+        WebElement title = driver.findElement(titleLocator);
 
         String text = title.getText();
         assertTrue(text.contains("Samara"), "First title should contain 'Samara'");
