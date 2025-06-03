@@ -30,5 +30,6 @@ public class TestSearch extends Init {
 
         String text = firstTitle.getText();
         assertTrue(text.contains("Burger King") || text.contains("Бургер Кинг"), "First title should contain 'Burger King'");
+        System.out.println("Place Search test completed successfully");
     }
 }

@@ -70,6 +70,7 @@ public class TestRelative extends Init{
 
         String text = title.getText();
         assertTrue(text.contains("Samara"), "First title should contain 'Samara'");
+        System.out.println("Share test completed successfully");
     }
     @Test
     public void TestNearby() throws InterruptedException {
@@ -100,5 +101,6 @@ public class TestRelative extends Init{
         By listLocator = By.xpath("(//ul[@class='search-list-view__list'])");
         WebElement listRest = wait.until(ExpectedConditions.presenceOfElementLocated(listLocator));
         // if list is present we win
+        System.out.println("Search Nearby test completed successfully");
     }
 }

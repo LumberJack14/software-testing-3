@@ -37,6 +37,7 @@ public class TestMapControl extends Init {
         scaleLabelZoomedIn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class, 'map-scale-line__label')]")));
         String zoomedOutText = scaleLabelZoomedIn.getText();
         assertTrue(zoomedOutText.contains("500 km"), "Expected '500 km' after zoom out");
+        System.out.println("Zoom test completed successfully");
     }
 
     @Test
@@ -59,5 +60,6 @@ public class TestMapControl extends Init {
 
         String newURL = driver.getCurrentUrl();
         assertNotEquals(originalURL, newURL, "Map coordinates in URL should change after drag.");
+        System.out.println("Drag test completed successfully");
     }
 }
