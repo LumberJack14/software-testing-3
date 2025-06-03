@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class TestSearch extends Init{
 
     @Test
-    public void testSearchForOpenAI() throws InterruptedException {
+    public void TestSearch() throws InterruptedException {
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         WebElement searchBox = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@placeholder='Поиск и выбор мест']")));
