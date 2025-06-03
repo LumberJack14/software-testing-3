@@ -15,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class TestMapControl extends Init {
     @Test
     public void TestZoom() throws InterruptedException {
+        System.out.println("Zoom test");
         WebElement zoomInBtn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@aria-label='Zoom in']")));
         zoomInBtn.click();
 
@@ -40,7 +41,7 @@ public class TestMapControl extends Init {
 
     @Test
     public void TestDrag() throws InterruptedException {
-
+        System.out.println("Drag test");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         String originalURL = driver.getCurrentUrl();
 

@@ -22,6 +22,7 @@ public class TestRelative extends Init{
     }
     @Test
     public void TestShare() throws Exception {
+        System.out.println("Share test");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         By searchBoxLocator = By.xpath("//input[@class='input__control _bold']");
         wait.until(ExpectedConditions.presenceOfElementLocated(searchBoxLocator));
@@ -72,6 +73,7 @@ public class TestRelative extends Init{
     }
     @Test
     public void TestNearby() throws InterruptedException {
+        System.out.println("Search Nearby test");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         By searchBoxLocator = By.xpath("//input[@class='input__control _bold']");
         wait.until(ExpectedConditions.presenceOfElementLocated(searchBoxLocator));
