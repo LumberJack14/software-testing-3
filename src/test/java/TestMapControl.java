@@ -18,6 +18,10 @@ public class TestMapControl extends Init {
         WebElement zoomInBtn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@aria-label='Zoom in']")));
         zoomInBtn.click();
 
+        wait.until(driver1 -> {
+            WebElement scale = driver1.findElement(By.xpath("//div[contains(@class, 'map-scale-line__label')]"));
+            return scale.getText().contains("200 km");
+        });
         WebElement scaleLabelZoomedIn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class, 'map-scale-line__label')]")));
         String zoomedInText = scaleLabelZoomedIn.getText();
         assertTrue(zoomedInText.contains("200 km"), "Expected '200 km' after zoom in");
