@@ -73,6 +73,31 @@ public class TestRelative extends Init{
     }
     @Test
     public void TestNearby() throws InterruptedException {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        By searchBoxLocator = By.xpath("//input[@class='input__control _bold']");
+        wait.until(ExpectedConditions.presenceOfElementLocated(searchBoxLocator));
+        WebElement searchBox = driver.findElement(searchBoxLocator);  // locate again
+        searchBox.sendKeys("Samara");
 
+        wait.until(ExpectedConditions.presenceOfElementLocated(searchBoxLocator));
+        searchBox = driver.findElement(searchBoxLocator);
+        searchBox.sendKeys(Keys.ENTER);
+
+        By foodLocator = By.xpath("//a[@class='catalog-grid-view__item _id_food _outline _n_5']");
+        wait.until(ExpectedConditions.elementToBeClickable(foodLocator));
+        WebElement foodButton = driver.findElement(foodLocator);
+        wait.until(ExpectedConditions.visibilityOf(foodButton));
+        int tries = 0;
+        while (tries < 3) {
+            try {
+                foodButton.click();
+                break;
+            }
+            catch (Exception e) {tries++;}
+        }
+
+        By listLocator = By.xpath("(//ul[@class='search-list-view__list'])");
+        WebElement listRest = wait.until(ExpectedConditions.presenceOfElementLocated(listLocator));
+        // if list is present we win
     }
 }
